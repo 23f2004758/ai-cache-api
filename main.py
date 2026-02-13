@@ -5,9 +5,6 @@ import sqlite3
 import datetime
 import openai
 import os
-
-# app = FastAPI()
-
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -19,6 +16,25 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+class PipelineRequest(BaseModel):
+    email: str
+    source: str
+
+
+@app.get("/")
+def health():
+    return {"status": "ok"}
+
+
+@app.post("/pipeline")
+def run_pipeline(request: PipelineRequest):
+    return {
+        "items": [],
+        "notificationSent": True,
+        "processedAt": datetime.datetime.utcnow().isoformat(),
+        "errors": []
+    }
 
 
 # -------- CONFIG --------
