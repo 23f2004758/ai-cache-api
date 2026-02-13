@@ -6,7 +6,20 @@ import datetime
 import openai
 import os
 
+# app = FastAPI()
+
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 # -------- CONFIG --------
 openai.api_key = "eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IjIzZjIwMDQ3NThAZHMuc3R1ZHkuaWl0bS5hYy5pbiJ9.z7lU4E6qvsdq5iwuu6VZHL6o4bpqv4wuAYam723cQ2Q"
