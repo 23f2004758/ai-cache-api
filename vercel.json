@@ -1,0 +1,14 @@
+{
+  "builds": [
+    {
+      "src": "api/semantic-search.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/semantic-search",
+      "dest": "api/semantic-search.py"
+    }
+  ]
+}
